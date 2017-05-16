@@ -1,6 +1,5 @@
 package ngdemo.service;
 
-import static com.mchange.v2.c3p0.impl.C3P0Defaults.user;
 import java.util.List;
 import ngdemo.dao.LeverancierDAO;
 import ngdemo.domain.Leverancier;

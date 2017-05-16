@@ -16,9 +16,9 @@ app.run(function ($rootScope, $templateCache) {
 });
 
 
-app.controller('MyCtrl1', ['$scope', 'UserFactory', function ($scope, UserFactory) {
-    $scope.bla = 'bla from controller';
-    UserFactory.get({}, function (userFactory) {
-        $scope.firstname = userFactory.firstName;
+app.controller('LeverancierCtrl', ['$scope', 'LeverancierResource', function ($scope, LeverancierResource) {
+   
+    LeverancierResource.get({}, function (LeverancierResource) {
+        $scope.leveranciers = LeverancierResource.values();
     })
 }]);
