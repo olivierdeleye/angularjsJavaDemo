@@ -16,9 +16,12 @@ app.run(function ($rootScope, $templateCache) {
 });
 
 
-app.controller('LeverancierCtrl', ['$scope', 'LeverancierResource', function ($scope, LeverancierResource) {
+app.controller('leverancierCtrl', ['$scope', 'LeverancierResource', function ($scope, LeverancierResource) {
    
-    LeverancierResource.get({}, function (LeverancierResource) {
-        $scope.leveranciers = LeverancierResource.values();
-    })
+   $scope.leveranciers = LeverancierResource.get();
+   
+}]);
+
+app.controller('welkomCtrl', ['$scope', function ($scope) {
+   
 }]);

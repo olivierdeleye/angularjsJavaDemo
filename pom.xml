@@ -12,12 +12,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jersey.version>1.17.1</jersey.version>
+        <jackson.version>2.9.0.pr3</jackson.version>
         <guice.version>3.0</guice.version>
         <guava.version>r09</guava.version>
         <tomcat.target.dev>${env.HOME}/development/servers/tomcat/apache-tomcat-8.5.15/webapps</tomcat.target.dev>
     </properties>
-
+   
     <build>
+         <resources>
+            <resource>
+               <directory>src/main/resources</directory>
+               <filtering>true</filtering>
+            </resource>
+        </resources>
         <finalName>ngdemo</finalName>
         <plugins>
             <plugin>
@@ -189,12 +196,19 @@
         </dependency>
 
         <!-- Jackson (mapping JSON lists for AngularJS) ======================== -->
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider -->
         <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-jaxrs</artifactId>
-            <version>1.9.12</version>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson.version}</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate5</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
         <!-- Guice ============================================================= -->
         <dependency>

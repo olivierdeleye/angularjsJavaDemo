@@ -5,13 +5,9 @@ package ngdemo.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,8 +25,8 @@ public class Groep implements Serializable {
     @Column
     private String groepNaam;
     
-    @OneToMany(mappedBy= "groep", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private Set <Leverancier> leveranciers;
+//    @OneToMany(mappedBy= "groep", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+//    private Set <Leverancier> leveranciers;
 
     public Groep() {
     }
@@ -51,23 +47,23 @@ public class Groep implements Serializable {
         this.groepNaam = groepNaam;
     }
 
-    public Set<Leverancier> getLeveranciers() {
-        return leveranciers;
-    }
-
-    public void setLeveranciers(Set<Leverancier> leveranciers) {
-        this.leveranciers = leveranciers;
-    }
-
-    public void addLeverancier(Leverancier leverancier){
-        leveranciers.add(leverancier);
-        leverancier.setGroep(this);
-    }
-    
-    public void removeLeverancier(Leverancier leverancier){
-        leverancier.setGroep(null);
-        this.leveranciers.remove(leverancier);
-    }
+//    public Set<Leverancier> getLeveranciers() {
+//        return leveranciers;
+//    }
+//
+//    public void setLeveranciers(Set<Leverancier> leveranciers) {
+//        this.leveranciers = leveranciers;
+//    }
+//
+//    public void addLeverancier(Leverancier leverancier){
+//        leveranciers.add(leverancier);
+//        leverancier.setGroep(this);
+//    }
+//    
+//    public void removeLeverancier(Leverancier leverancier){
+//        leverancier.setGroep(null);
+//        this.leveranciers.remove(leverancier);
+//    }
     
     @Override
     public int hashCode() {
