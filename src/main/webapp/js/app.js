@@ -4,6 +4,6 @@
 angular.module('ngdemo', ['ngRoute', 'ngTouch', 'ui.grid', 'ngdemo.filters', 'ngdemo.services', 'ngdemo.directives', 'ngdemo.controllers']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/leveranciers', {templateUrl: 'partials/leveranciers.html', controller: 'leverancierCtrl'});
-        $routeProvider.when('/welkom', {templateUrl: 'partials/welkom.html', controller: 'welkomCtrl'});
-        $routeProvider.otherwise({redirectTo: '/welkom'});
+        $routeProvider.when('/home', {templateUrl: 'partials/welkom.html', controller: 'welkomCtrl'});
+        $routeProvider.otherwise({redirectTo: '/home'});
     }]);
