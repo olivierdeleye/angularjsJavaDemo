@@ -21,58 +21,60 @@ app.controller('leverancierCtrl', ['$scope', 'LeverancierResource', function ($s
               
    $scope.leveranciers = [];
    
-//   $scope.gridOptions = { data: 'leveranciers',
-//              rowHeight: 25,
-//              multiSelect:false,
-//              enableRowSelection: true,
-//              columnDefs: [
-//               {
-//                   field: "leverancierNr",
-//                   displayName: "Nummer"
-//                      
-//                },
-//               {
-//                 field: "lev_naam",
-//                 displayName: "Naam",
-//                 width: '25%',
-//                 height: '50px'                
-//               },
-//               {
-//                 field: "straat",
-//                 displayName: "Straat",
-//                 width: '25%',
-//                 height: '50px'
-//               },
-//               {
-//                 field: "huisNr",
-//                 displayName: "HuisNr",
-//                 width: '25%',
-//                 height: '50px'
-//               },
-//               {
-//                 field: "postcode",
-//                 displayName: "Postcode",
-//                 width: '25%',
-//                 height: '50px'
-//               },
-//               {
-//                 field: "gemeente",
-//                 displayName: "Gemeente",
-//                 width: '25%',
-//                 height: '50px'
-//               },
-//               {
-//                 field: "telefoon",
-//                 displayName: "Telefoon",
-//                 width: '25%',
-//                 height: '50px'
-//               }
-//
-//               ]};
+   $scope.gridOptions = { data: 'leveranciers',
+              rowHeight: 25,
+              multiSelect:false,
+              enableRowSelection: true,
+              columnDefs: [
+               {
+                 
+                field: "leverancierNr",
+                displayName: "Nummer",
+                width: '5%'            
+                },
+               {
+                 field: "lev_naam",
+                 displayName: "Naam",
+                 width: '20%'
+                              
+               },
+                {
+                 field: "groep.groepNaam",
+                 displayName: "Groep",
+                 width: '20%'
+                              
+               },
+               {
+                 field: "straat",
+                 displayName: "Straat",
+                 width: '15%'
+               },
+               {
+                 field: "huisNr",
+                 displayName: "HuisNr",
+                 width: '5%'
+               },
+               {
+                 field: "postcode",
+                 displayName: "Postcode",
+                 width: '8%'
+               },
+               {
+                 field: "gemeente",
+                 displayName: "Gemeente",
+                 width: '8%'
+               },
+               {
+                 field: "telefoon",
+                 displayName: "Telefoon"
+                
+               }
+
+               ]};
            
     $scope.promise = LeverancierResource.query().$promise.then(function(result){
              $scope.leveranciers = angular.copy(result);
-             $scope.gridOptions = $scope.leveranciers;
+            // $scope.gridOptions = $scope.leveranciers;
              
         });
      
