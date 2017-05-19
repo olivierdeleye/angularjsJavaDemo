@@ -6,7 +6,6 @@
 package ngdemo.domain;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -18,7 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  *
@@ -53,10 +52,12 @@ public class Leverancier implements Serializable {
     @Column
     private String opmerking;
     
-    @OneToMany(mappedBy = "leverancier", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private Set <OrderLijn> orderlijnen;
+
+//    @OneToMany(mappedBy = "leverancier", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+//    private Set <OrderLijn> orderlijnen;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+ 
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="fk_groep")
     private Groep groep;
 
@@ -242,39 +243,39 @@ public class Leverancier implements Serializable {
         this.telefoon = telefoon;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Set <OrderLijn> getOrderlijnen() {
-        return orderlijnen;
-    }
-
-    /**
-     *
-     * @param orderlijnen
-     */
-    public void setOrderlijnen(Set <OrderLijn> orderlijnen) {
-        this.orderlijnen = orderlijnen;
-    } 
-    
-    /**
-     *
-     * @param orderlijn
-     */
-    public void addOrderLijn(OrderLijn orderlijn){
-        orderlijnen.add(orderlijn);
-        orderlijn.setLeverancier(this);
-    }
-    
-    /**
-     *
-     * @param orderlijn
-     */
-    public void removeOrderlijn(OrderLijn orderlijn){
-        orderlijn.setLeverancier(null);
-        this.orderlijnen.remove(orderlijn);
-    }
+//    /**
+//     *
+//     * @return
+//     */
+//    public Set <OrderLijn> getOrderlijnen() {
+//        return orderlijnen;
+//    }
+//
+//    /**
+//     *
+//     * @param orderlijnen
+//     */
+//    public void setOrderlijnen(Set <OrderLijn> orderlijnen) {
+//        this.orderlijnen = orderlijnen;
+//    } 
+//    
+//    /**
+//     *
+//     * @param orderlijn
+//     */
+//    public void addOrderLijn(OrderLijn orderlijn){
+//        orderlijnen.add(orderlijn);
+//        orderlijn.setLeverancier(this);
+//    }
+//    
+//    /**
+//     *
+//     * @param orderlijn
+//     */
+//    public void removeOrderlijn(OrderLijn orderlijn){
+//        orderlijn.setLeverancier(null);
+//        this.orderlijnen.remove(orderlijn);
+//    }
 
     public Groep getGroep() {
         return groep;
@@ -363,9 +364,9 @@ public class Leverancier implements Serializable {
         if (!Objects.equals(this.opmerking, other.opmerking)) {
             return false;
         }
-        if (!Objects.equals(this.orderlijnen, other.orderlijnen)) {
-            return false;
-        }
+//        if (!Objects.equals(this.orderlijnen, other.orderlijnen)) {
+//            return false;
+//        }
         return true;
     }
 

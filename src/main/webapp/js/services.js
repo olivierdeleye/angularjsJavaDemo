@@ -11,5 +11,5 @@ services.factory('LeverancierResource', function ($resource) {
             params: {},
             isArray: true
         }
-    })
+    });
 });

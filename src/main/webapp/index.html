@@ -6,21 +6,28 @@
     <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-<ul class="menu">
-    <li><a href="#/leveranciers">Leveranciers</a></li>
+<ul>
+    <li><a href="#!/leveranciers">Leveranciers</a></li>
 </ul>
 
-<div ng-view></div>
+<div ng-view ></div>
 
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
--->
-<script src="lib/angular/angular.js"></script>
-<script src="lib/angular/angular-resource.js"></script>
+<link rel="stylesheet" type="text/css" href="node_modules/angular-ui-grid/ui-grid.css" />
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-touch/angular-touch.js"></script>
+<script src="node_modules/angular-animate/angular-animate.js"></script>
+<script src="node_modules/requirejs/require.js"></script>
+<script src="node_modules/angular-ui-grid/ui-grid.js"></script>
+<script src="node_modules/angular-route/angular-route.js"></script>
+<script src="node_modules/angular-resource/angular-resource.js"></script>
+
 <script src="js/app.js"></script>
 <script src="js/services.js"></script>
 <script src="js/controllers.js"></script>
 <script src="js/filters.js"></script>
 <script src="js/directives.js"></script>
+
 </body>
 </html>
