@@ -3,23 +3,28 @@
 <head>
     <meta charset="utf-8">
     <title>My AngularJS App</title>
-    <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
-<ul>
-    <li><a href="#!/home">Home</a></li>
-    <li><a href="#!/leveranciers">Leveranciers</a></li>
-    
-</ul>
+  
+<nav class="menu breadcrumb">
+    <a class="breadcrumb-item" href="#!/home">Home&nbsp </a>
+  <a class="breadcrumb-item" href="#!/leveranciers">Leveranciers</a>
+</nav>
+
 
 <div ng-view ></div>
 
+<link rel="stylesheet" type="text/css" href="css/app.css" />
 <link rel="stylesheet" type="text/css" href="node_modules/angular-ui-grid/ui-grid.css" />
+
+<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="node_modules/angular/angular.js"></script>
 <script src="node_modules/angular-touch/angular-touch.js"></script>
 <script src="node_modules/angular-animate/angular-animate.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="node_modules/angular-modal-service/src/angular-modal-service.js"></script>
 <script src="node_modules/requirejs/require.js"></script>
 <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
 <script src="node_modules/angular-route/angular-route.js"></script>

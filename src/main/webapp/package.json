@@ -10,7 +10,9 @@
     "angular-route": "^1.6.4",
     "angular-touch": "^1.6.4",
     "angular-ui-grid": "^4.0.4",
-    "requirejs": "^2.3.3"
+    "angular-modal-service": "*",
+    "requirejs": "^2.3.3",
+    "bootstrap": "*"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,18 +1,22 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
+a {
+    text-decoration: none;
+}
+
+nav {
+  font-size: 18px;
+  //font-weight: bold;
   margin-bottom: 2em;
   padding: 0 0 0.5em;
 }
 
 .menu:before {
-  content: "[";
+  //content: "[";
 }
 
 .menu:after {
-  content: "]";
+  //content: "]";
 }
 
 .menu > li {
@@ -29,8 +33,32 @@
   padding: 0;
 }
 
-.gridStyle {
-    border: 1px solid rgb(212,212,212);
-    width: 400px; 
-    height: 300px
+.grid {
+  width: 75%;
+  height: 450px;
 }
+
+.ui-grid-cell.ui-grid-disable-selection.ui-grid-row-header-cell {
+    pointer-events: auto;
+}
+
+.title {
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 800;
+    line-height: 15.4px;
+    color: #001a66;
+    text-decoration: underline;
+ 
+}
+.modal-header {
+    background-color: #ebebe0;
+}
+
+.modal-footer {
+    background-color: #ebebe0;
+}
+
+
