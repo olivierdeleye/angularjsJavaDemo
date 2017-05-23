@@ -44,21 +44,29 @@ nav {
 
 .title {
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
-    font-size: 24px;
+    font-size: 22px;
     font-style: normal;
     font-variant: normal;
     font-weight: 800;
     line-height: 15.4px;
     color: #001a66;
-    text-decoration: underline;
+
  
 }
-.modal-header {
-    background-color: #ebebe0;
+/*.modal-header {
+    background-color:  #001f33;
+    opacity: 0.1;
+    color: white;
 }
 
 .modal-footer {
-    background-color: #ebebe0;
+    background-color:   #001f33;
+    opacity: 0.1;
+    
+}*/
+
+.close {
+    background-color: white;
 }
 
 
