@@ -18,7 +18,8 @@ var app = angular.module('ngdemo.controllers', []);
 
 app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierResource' ,'ModalService', function ($scope, $log, LeverancierResource, ModalService) {
         
-   $scope.leveranciers = [];
+   $scope.leverancier = {};
+   $scope.newLeverancier = {};
    
    $scope.gridOptions = { 
         enableRowSelection: true,
@@ -116,16 +117,13 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierResource' ,'Mod
             }).then(function(modal) {
               modal.element.modal();
               modal.close.then(function(result) {
-                if (!result) {
-                  $scope.complexResult = "Modal forcibly closed..."
-                } else {
-                  $scope.complexResult  = "Name: " + result.name + ", age: " + result.age;
-                }
+                if (result) {
+                  $scope.leverancier  = result.leverancier;
+                  console.log('leverancier vanuit modal.close.then function');
+                } 
               });
             });
-
     };
-   
 }]);
 
 
@@ -139,8 +137,8 @@ app.controller('leverancierModalCtrl', ['$scope', '$element', 'title', 'leveranc
         //  the button has the 'data-dismiss' attribute.
         $scope.close = function() {
                 close({
-            name: $scope.name,
-            age: $scope.age
+                    leverancier: $scope.leverancier
+      
           }, 500); // close, but give 500ms for bootstrap to animate
         };
 
