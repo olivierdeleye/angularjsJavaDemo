@@ -25,7 +25,7 @@ public enum PersistenceManager {
     private PersistenceManager() {
       // "jpa-example" was the value of the name attribute of the
       // persistence-unit element.
-      emFactory = Persistence.createEntityManagerFactory("frontenwmstest");
+      emFactory = Persistence.createEntityManagerFactory("angular_java_demo");
     }
     
     /**
