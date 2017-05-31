@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import ngdemo.domain.Groep;
 import ngdemo.domain.Leverancier;
 import ngdemo.util.PersistenceManager;
 import org.springframework.util.CollectionUtils;
@@ -51,9 +52,15 @@ public class LeverancierDAO {
      */
 
      public Leverancier createLeverancier(String leverancierNr, String lev_naam, String straat, String huisNr, String bus, String gemeente, String postcode , String telefoon , String fax,
-                                           String contactpersoon, String opmerking) {
+                                           String contactpersoon, String opmerking, String groepNaam) {
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
-        
+        Groep groep;
+        GroepDAO groepDao = new GroepDAO();
+        groep = groepDao.findByGroepNaam(groepNaam);
+        if(groep == null){
+            groep = groepDao.createNewGroep(groepNaam);
+        }
+      
         try{
             Leverancier lev = new Leverancier();
             lev.setLeverancierNr(leverancierNr);
@@ -67,6 +74,7 @@ public class LeverancierDAO {
             lev.setFax(fax);
             lev.setContactpersoon(contactpersoon);
             lev.setOpmerking(opmerking);
+            lev.setGroep(groep);
             em.getTransaction().begin();
             em.persist(lev);
             em.getTransaction().commit();

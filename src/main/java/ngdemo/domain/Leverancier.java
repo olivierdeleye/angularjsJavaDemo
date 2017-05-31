@@ -5,6 +5,8 @@
  */
 package ngdemo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -27,24 +29,34 @@ public class Leverancier implements Serializable {
     
     @Id
     private String leverancierNr;
+
     @Column
     private String lev_naam;
+   
     @Column
     private String straat;
+   
     @Column
     private String huisNr;
+  
     @Column
     private String busNr;
+    
     @Column
     private String gemeente;
+   
     @Column
     private String postcode;
+   
     @Column
     private String telefoon;
+   
     @Column
     private String fax;
+   
     @Column
     private String contactpersoon;
+  
     @Column
     private String opmerking;
     

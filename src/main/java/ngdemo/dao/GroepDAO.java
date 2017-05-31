@@ -24,6 +24,24 @@ public class GroepDAO {
      * @param id int
      * @return Groep 
      */
+    
+    public Groep createNewGroep(String groepNaam){
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        try{
+            em.getTransaction().begin();
+            Groep groep = new Groep();
+            groep.setGroepNaam(groepNaam);
+            em.persist(groep);
+            em.getTransaction().commit();
+            return groep;
+        }
+        finally{
+            em.close();
+        }
+        
+    }
+    
+    
     public Groep findById(int id){
         EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
         
@@ -47,7 +65,8 @@ public class GroepDAO {
         
         try{
            List <Groep> groepen;
-           Query q = em.createQuery("SELECT g FROM Groep g WHERE g.groep = :groepNaam", Groep.class);
+           Query q = em.createQuery("SELECT g FROM Groep g WHERE g.groepNaam = :groepNaam", Groep.class);
+           q.setParameter("groepNaam", groepNaam);
            groepen = q.getResultList();
            return CollectionUtils.isEmpty(groepen) ? null : groepen.get(0);
         }

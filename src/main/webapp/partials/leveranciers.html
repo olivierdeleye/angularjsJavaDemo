@@ -3,14 +3,94 @@
     <br>
    <div ng-if="promise" ui-grid-selection ui-grid="gridOptions" class="grid"></div>
    <br>
-   <div style="padding-left: 0px;" class="col-md-9">
+   <div style="padding-left: 0px;" class="col-sm-9">
        <div class="panel panel-default">
            <div class="panel-heading"><div class="title">Nieuwe leverancier</div></div>
          <div class="panel-body">
-             <form>
-                 
-             </form>
+             
+                <div class="col-sm-5">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"> Leverancier</label>
+                            <div class="col-sm-10">
+                               <input type="text" class="form-control" id="name" ng-model="formData.lev_naam">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="col-sm-2 control-label"> Straat</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="straat" ng-model="formData.straat">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"> Huisnr</label>
+                            <div class="col-sm-2">
+                               <input type="text" class="form-control" id="huisnr" ng-model="formData.huisNr">
+                            </div>
+                            <label class="col-sm-2 control-label"> Bus</label>
+                            <div class="col-sm-2">
+                               <input type="text" class="form-control" id="busNr" ng-model="formData.bus">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2"> Tel</label>
+                            <div class="col-sm-4">
+		              <input type="text" placeholder="+32 (0)12 34 56 78" class="form-control" id="telefoon" ng-model="formData.telefoon">
+		            </div>
+                        </div>
+                            <div class="form-group">
+                            <label class="control-label col-sm-2"> Fax</label>
+                            <div class="col-sm-4">
+		              <input type="text"  placeholder="+32 (0)12 34 56 78" class="form-control" id="fax" ng-model="formData.fax">
+		            </div>
+                        </div>
+                    </form>
+                </div>
+            
+                <div class="col-sm-5">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                          <label class="control-label col-sm-3"> LeverancierNr</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="groep" ng-model="formData.leverancierNr">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-3"> Groep</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="groep" ng-model="formData.groepNaam">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-3"> Gemeente</label>
+                          <div class="col-sm-4">
+		            <input type="text" class="form-control" id="gemeente" ng-model="formData.gemeente">
+		          </div>
+                          <label class="control-label col-sm-2"> postcode</label>
+                          <div class="col-sm-3">
+		            <input type="text" class="form-control" id="postcode" ng-model="formData.postcode">
+		          </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-3"> Contactpersoon</label>
+                          <div class="col-sm-9">
+		            <input type="text" class="form-control" id="contact" ng-model="formData.contactpersoon">
+		          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-3"> Opmerking</label>
+                          <div class="col-sm-9">
+		            <input type="text" class="form-control" id="opmerking" ng-model="formData.opmerking">
+		          </div>
+                        </div>
+                    </form>
+                </div>
+             <div class="col-sm-12">
+                 <button data-toggle="popover" title="Nieuwe leverancier opslaan" data-content="Nieuwe leverancier opslaan" type="button" ng-click="saveNewLeverancier()" class="pull-right btn btn-primary" data-dismiss="modal">Opslaan</button>   
+             </div>
+              
          </div>
+        </div>
     </div>
    </div>
      

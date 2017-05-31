@@ -1,6 +1,7 @@
 {
   "name": "ngdemo",
   "version": "1.0.0",
+  "repository": "angular_java_demo",
   "description": "angular dependencies",
   "main": "index.js",
   "dependencies": {
@@ -11,8 +12,8 @@
     "angular-touch": "^1.6.4",
     "angular-ui-grid": "^4.0.4",
     "angular-modal-service": "*",
-    "requirejs": "^2.3.3",
-    "bootstrap": "*"
+    "requirejs": "^2.3.3"
+    
   },
   "devDependencies": {},
   "scripts": {

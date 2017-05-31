@@ -16,10 +16,23 @@ var app = angular.module('ngdemo.controllers', []);
 //});
 
 
-app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierResource' ,'ModalService', function ($scope, $log, LeverancierResource, ModalService) {
+app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'ModalService', function ($scope, $log, LeverancierService, ModalService) {
         
    $scope.leverancier = {};
-   $scope.newLeverancier = {};
+   $scope.formData = {
+       lev_naam : "",
+       leverancierNr: "",
+       straat: "",
+       huisNr: "",
+       bus: "",
+       gemeente: "",
+       postcode: "",
+       telefoon: "",
+       fax: "",
+       groepNaam: "",
+       contact: "",
+       opmerking: ""
+   };
    
    $scope.gridOptions = { 
         enableRowSelection: true,
@@ -76,8 +89,7 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierResource' ,'Mod
                }
      ];
  
-
-    $scope.promise = LeverancierResource.query().$promise.then(function(results){
+    $scope.promise = LeverancierService.query().$promise.then(function(results){
         $scope.gridOptions.columnDefs = gridCols;
         $scope.gridOptions.data = results;
                  
@@ -124,6 +136,16 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierResource' ,'Mod
               });
             });
     };
+    
+    $scope.saveNewLeverancier = function(){
+        $scope.promiseLeverancier = LeverancierService.save({"leverancier": $scope.formData}).$promise.then(function(response){
+             if(response){
+                 $scope.response = response.data;
+             }
+        });
+        
+    };
+    
 }]);
 
 
@@ -131,6 +153,7 @@ app.controller('leverancierModalCtrl', ['$scope', '$element', 'title', 'leveranc
   function($scope, $element, title, leverancier, close) {
 
         $scope.leverancier = leverancier;
+        $scope.newLeverancier = {};
         $scope.title = title;
 
         //  This close function doesn't need to use jQuery or bootstrap, because
@@ -151,8 +174,7 @@ app.controller('leverancierModalCtrl', ['$scope', '$element', 'title', 'leveranc
 
           //  Now call close, returning control to the caller.
           close({
-            name: $scope.name,
-            age: $scope.age
+          
           }, 500); // close, but give 500ms for bootstrap to animate
         };
 
