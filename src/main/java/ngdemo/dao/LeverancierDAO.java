@@ -122,6 +122,62 @@ public class LeverancierDAO {
             em.close();        
         }      
     }
+    
+     public Leverancier updateLeverancier(String leverancierNr, String lev_naam, String straat, String huisNr, String bus, String gemeente, String postcode , String telefoon , String fax,
+                                           String contactpersoon, String opmerking, String groepNaam) {
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        Groep groep;
+        Leverancier lev = null;
+        
+        GroepDAO groepDao = new GroepDAO();
+        groep = groepDao.findByGroepNaam(groepNaam);
+        if(groep == null){
+            groep = groepDao.createNewGroep(groepNaam);
+        }
+         
+        try{
+            em.getTransaction().begin();
+            lev = findLeverancier(leverancierNr);
+            if(lev != null){
+                lev.setLev_naam(lev_naam);
+                lev.setStraat(straat);
+                lev.setHuisNr(huisNr);
+                lev.setBusNr(bus);
+                lev.setGemeente(gemeente);
+                lev.setPostcode(postcode);
+                lev.setTelNr(telefoon);
+                lev.setFax(fax);
+                lev.setContactpersoon(contactpersoon);
+                lev.setOpmerking(opmerking);
+                lev.setGroep(groep);
+                em.merge(lev);
+                em.getTransaction().commit(); 
+            }
+          
+            return lev;
+        }
+        finally{
+            em.close();
+          
+        } 
+    }
+     
+     public void deleteLeverancier(String leverancierNr){
+         
+        EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
+        
+        try{
+            Leverancier leverancier = em.find(Leverancier.class, leverancierNr);
+            if(leverancier != null){
+                em.getTransaction().begin();
+                em.remove(leverancier);
+                em.getTransaction().commit();
+            }
+        }
+        finally{
+            em.close();
+        }
+     }
     /**
      *
      * @return

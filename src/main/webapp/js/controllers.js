@@ -19,7 +19,8 @@ var app = angular.module('ngdemo.controllers', []);
 app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'ModalService', function ($scope, $log, LeverancierService, ModalService) {
         
    $scope.leverancier = {};
-   $scope.formData = {
+   var init = function(){
+       $scope.formData = {
        lev_naam : "",
        leverancierNr: "",
        straat: "",
@@ -32,7 +33,10 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'Moda
        groepNaam: "",
        contact: "",
        opmerking: ""
+    };
    };
+   
+   init();
    
    $scope.gridOptions = { 
         enableRowSelection: true,
@@ -89,11 +93,14 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'Moda
                }
      ];
  
-    $scope.promise = LeverancierService.query().$promise.then(function(results){
-        $scope.gridOptions.columnDefs = gridCols;
-        $scope.gridOptions.data = results;
-                 
-    });
+    $scope.listLeveranciers = function(){
+        $scope.promise = LeverancierService.query().$promise.then(function(results){
+            $scope.gridOptions.columnDefs = gridCols;
+            $scope.gridOptions.data = results;
+        });
+    };
+    
+    $scope.listLeveranciers();
 
      $scope.gridOptions.onRegisterApi = function(gridApi){
       //set gridApi on scope
@@ -104,7 +111,7 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'Moda
         $scope.selectedRow= {};
         $scope.selectedRow = $scope.gridApi.selection.getSelectedRows();
         $log.log(msg);
-        $scope.showModal()
+        $scope.showModal();
         $log.log($scope.selectedRow[0].postcode);
       });
       
@@ -129,8 +136,8 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'Moda
             }).then(function(modal) {
               modal.element.modal();
               modal.close.then(function(result) {
-                if (result) {
-                  $scope.leverancier  = result.leverancier;
+                if (result) {        
+                  $scope.listLeveranciers();
                   console.log('leverancier vanuit modal.close.then function');
                 } 
               });
@@ -141,26 +148,45 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'Moda
         $scope.promiseLeverancier = LeverancierService.save({"leverancier": $scope.formData}).$promise.then(function(response){
              if(response){
                  $scope.response = response.data;
+                 $scope.listLeveranciers();
+                 init();
+                 
              }
-        });
-        
+        });     
     };
     
 }]);
 
 
-app.controller('leverancierModalCtrl', ['$scope', '$element', 'title', 'leverancier', 'close', 
-  function($scope, $element, title, leverancier, close) {
+app.controller('leverancierModalCtrl', ['$scope', '$element', 'title', 'leverancier', 'close', 'LeverancierService',
+  function($scope, $element, title, leverancier, close, LeverancierService) {
 
-        $scope.leverancier = leverancier;
-        $scope.newLeverancier = {};
+        $scope.leverancierCopy = angular.copy(leverancier);
         $scope.title = title;
 
+        $scope.opslaan = function(){
+            
+            //UPDATE LEVERANCIER HIER
+            $scope.promiseLeverancier = LeverancierService.update({"leverancier": $scope.leverancierCopy}).$promise.then(function(response){
+                $scope.response = response;
+                console.log("http response: " + response);
+            });
+        };
+        
+        $scope.wissen = function(){
+            //UPDATE LEVERANCIER HIER
+            $scope.promiseLeverancier = LeverancierService.delete({"leverancierId": $scope.leverancierCopy.leverancierNr}).$promise.then(function(response){
+                $scope.response = response;
+                console.log("http response: " + response);
+                $scope.close();
+            });
+        };
+        
         //  This close function doesn't need to use jQuery or bootstrap, because
         //  the button has the 'data-dismiss' attribute.
         $scope.close = function() {
                 close({
-                    leverancier: $scope.leverancier
+                    leverancier: $scope.leverancierCopy
       
           }, 500); // close, but give 500ms for bootstrap to animate
         };

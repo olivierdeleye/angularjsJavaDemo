@@ -3,57 +3,74 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">{{title}} {{leverancier.groep.groepNaam}}</h4>
+        <h4 class="modal-title">{{title}} {{leverancierCopy.groep.groepNaam}}</h4>
       </div>
       <div class="modal-body">
 		<form class="form-horizontal" role="form">
 		  <div class="form-group">
 		    <label class="col-sm-2 control-label">Naam</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" ng-model="leverancier.lev_naam">
+		      <input type="text" class="form-control" ng-model="leverancierCopy.lev_naam">
 		    </div>
 		  </div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label">Groep</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" ng-model="leverancier.groep.groepNaam">
+		      <input type="text" class="form-control" ng-model="leverancierCopy.groep.groepNaam">
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label  class="col-sm-2 control-label">Straat</label>
 		    <div class="col-sm-4">
-		      <input type="text" class="form-control" ng-model="leverancier.straat">
+		      <input type="text" class="form-control" ng-model="leverancierCopy.straat">
 		    </div>
                     <label  class="col-sm-1 control-label">HuisNr</label>
                     <div class="col-sm-2">
-		      <input type="text" class="form-control" ng-model="leverancier.huisNr">
+		      <input type="text" class="form-control" ng-model="leverancierCopy.huisNr">
 		    </div>
                     <label  class="col-sm-1 control-label">Bus</label>
-                    <div class="col-sm-1">
-		      <input type="text" class="form-control" ng-model="leverancier.bus">
+                    <div class="col-sm-2">
+		      <input type="text" class="form-control" ng-model="leverancierCopy.busNr">
 		    </div>
 		  </div>
                   <div class="form-group">
                       <label class="col-sm-2 control-label">Gemeente</label>
-		    <div class="col-sm-3">
-		      <input type="text" class="form-control" ng-model="leverancier.gemeente">
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" ng-model="leverancierCopy.gemeente">
 		    </div>
-		    <label class="col-sm-2 control-label">Postcode</label>
+		    <label class="col-sm-1 control-label">Postcode</label>
 		    <div class="col-sm-2">
-		      <input type="text" class="form-control" ng-model="leverancier.postcode">
+		      <input type="text" class="form-control" ng-model="leverancierCopy.postcode">
 		    </div>      
 		  </div>
-                    <div class="form-group">
+                  <div class="form-group">
 		    <label class="col-sm-2 control-label">Telefoon</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="tel" ng-model="leverancierCopy.telefoon">
+		    </div>
+                    <label class="col-sm-1 control-label">Fax</label>
 		    <div class="col-sm-3">
-		      <input type="text" class="form-control" id="name" ng-model="leverancier.telefoon">
+		      <input type="text" class="form-control" id="tel" ng-model="leverancierCopy.fax">
+		    </div>
+		  </div>
+                    <div class="form-group">
+		    <label class="col-sm-2 control-label">Contactpersoon</label>
+		    <div class="col-sm-4">
+		      <input type="text" class="form-control" id="contact" ng-model="leverancierCopy.contactpersoon">
+		    </div>
+		  </div>
+                    <div class="form-group">
+		    <label class="col-sm-2 control-label">Opmerking</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" id="name" ng-model="leverancierCopy.opmerking">
 		    </div>
 		  </div>
 		</form>
 
       </div>
       <div class="modal-footer">
-        <button data-toggle="popover" title="Wijzigingen opslaan" data-content="Wijzigingen leverancier opslaan" type="button" ng-click="close()" class="btn btn-primary" data-dismiss="modal">Opslaan</button>
+        <button data-toggle="popover" title="Wijzigingen opslaan" data-content="Wijzigingen leverancier opslaan" type="button" ng-click="opslaan()" class="btn btn-primary" data-dismiss="modal">Opslaan</button>
+        <button data-toggle="popover" title="Leverancier wissen" data-content="Leverancier wissen" type="button" ng-click="wissen()" class="btn btn-danger" data-dismiss="modal">Wissen</button>
         <button data-toggle="popover" title="Sluiten" data-content="Annuleren" type="button" ng-click="cancel()" class="btn">Annuleren</button>
       </div>
     </div>
