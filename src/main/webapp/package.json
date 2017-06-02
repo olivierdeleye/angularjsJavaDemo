@@ -13,7 +13,8 @@
     "angular-ui-grid": "^4.0.4",
     "angular-modal-service": "*",
     "requirejs": "^2.3.3",
-    "angular-bootstrap": "*"
+    "angular-bootstrap": "*",
+    "international-phone-number" : "*"
     
   },
   "devDependencies": {},
