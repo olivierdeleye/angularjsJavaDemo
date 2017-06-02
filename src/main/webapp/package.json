@@ -12,7 +12,8 @@
     "angular-touch": "^1.6.4",
     "angular-ui-grid": "^4.0.4",
     "angular-modal-service": "*",
-    "requirejs": "^2.3.3"
+    "requirejs": "^2.3.3",
+    "angular-bootstrap": "*"
     
   },
   "devDependencies": {},

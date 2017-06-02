@@ -16,8 +16,49 @@ var app = angular.module('ngdemo.controllers', []);
 //});
 
 
-app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'ModalService', function ($scope, $log, LeverancierService, ModalService) {
+app.controller('leverancierCtrl', ['$scope', '$http','$log', 'LeverancierService' ,'ModalService', function ($scope, $http, $log, LeverancierService, ModalService) {
         
+    $scope.selected = undefined;
+      
+    $scope.gemeentes = [];
+    
+    $http.get("node_modules/belgium-zip-city/data/blob.json").then(function(response) {
+            var gemeentesPostcodes = response.data.cities;
+            angular.forEach(gemeentesPostcodes, function(value, key) {
+                
+                var obj = { naam: key, postcodes: value};
+                this.push(obj);
+              }, $scope.gemeentes);
+       
+    });
+    
+    var _selected;
+   
+    $scope.ngModelOptionsSelected = function(value) {
+    if (arguments.length) {
+      _selected = value;
+    } else {
+      return _selected;
+    }
+  };
+
+  $scope.modelOptions = {
+    debounce: {
+      default: 500,
+      blur: 250
+    },
+    getterSetter: true
+  };
+
+
+  $scope.$watch('selected', function(newVal, oldVal){
+      if(!angular.equals(newVal, oldVal) && !angular.isUndefined($scope.selected.postcodes)){
+          $scope.formData.postcode = $scope.selected.postcodes[0];
+          $scope.selected = $scope.selected.naam;
+      }
+  })
+
+
    $scope.leverancier = {};
    var init = function(){
        $scope.formData = {
@@ -37,6 +78,7 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'Moda
    };
    
    init();
+
    
    $scope.gridOptions = { 
         enableRowSelection: true,
@@ -154,7 +196,7 @@ app.controller('leverancierCtrl', ['$scope', '$log', 'LeverancierService' ,'Moda
              }
         });     
     };
-    
+   
 }]);
 
 
@@ -207,6 +249,11 @@ app.controller('leverancierModalCtrl', ['$scope', '$element', 'title', 'leveranc
 }]);
 
 
-app.controller('welkomCtrl', ['$scope', function ($scope) {
-   
+app.controller('welkomCtrl', ['$scope', '$http', function ($scope, $http) {
+      $scope.gekozenPlaats = $scope.gPlace;
+    
+      
+      
+      
+      
 }]);

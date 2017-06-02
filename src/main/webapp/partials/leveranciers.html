@@ -64,8 +64,10 @@
                         <div class="form-group">
                           <label class="control-label col-sm-3"> Gemeente</label>
                           <div class="col-sm-4">
-		            <input type="text" class="form-control" id="gemeente" ng-model="formData.gemeente">
+                            <input type="text" ng-model="selected" uib-typeahead="gemeente as (gemeente.naam +' '+gemeente.postcodes[0]) for gemeente in gemeentes | filter:$viewValue | limitTo:8" class="form-control">
+		            
 		          </div>
+                       
                           <label class="control-label col-sm-2"> postcode</label>
                           <div class="col-sm-3">
 		            <input type="text" class="form-control" id="postcode" ng-model="formData.postcode">
@@ -84,14 +86,17 @@
 		          </div>
                         </div>
                     </form>
+                 
                 </div>
+            
              <div class="col-sm-12">
                  <button data-toggle="popover" title="Nieuwe leverancier opslaan" data-content="Nieuwe leverancier opslaan" type="button" ng-click="saveNewLeverancier()" class="pull-right btn btn-primary" data-dismiss="modal">Opslaan</button>   
              </div>
               
          </div>
         </div>
+        
     </div>
    </div>
+
      
-</div>
